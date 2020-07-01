@@ -1,11 +1,6 @@
-// Assignment Code Beginning
-// ****This time, lets start by making the function that will retrieve all the other functions' data*******
-// ****Note to Self: This could help plan out my next move??*****
-
 //Global Scope Password
 var password = "";
 
-//This is the function that will help plan out what we need, its a function but also a "blueprint"
 var passwordGeneration = function() {
   // Call in Global Password here to send out at end
   password = "";
@@ -15,6 +10,13 @@ var passwordGeneration = function() {
 
   //Create a function that will determine all inclusions for Character Sets
   var passwordInclusions = charaInclusions();
+  var passwordInclusionsLength = passwordInclusions.length;
+
+  for (var i = 0; i < lengthPassword; i++) {
+    password += passwordInclusions.charAt(Math.floor(Math.random() * passwordInclusionsLength));
+  }
+
+  return password;
 };
 
 //This is the function that will prompt for **password length**
@@ -35,7 +37,7 @@ var passwordLength = function() {
   return lengthPass;
 }
 
-//Function That will determing included Character sets
+//Function That will determine included Character sets
 var charaInclusions = function() {
   //String to send back inclusions at end
   var passwordInclusions = "";
@@ -75,7 +77,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = passwordGeneration();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
