@@ -14,7 +14,7 @@ var passwordGeneration = function() {
   var lengthPassword = passwordLength();
 
   //Create a function that will determine all inclusions for Character Sets
-  var passwordCharaSets = charaInclusions();
+  var passwordInclusions = charaInclusions();
 };
 
 //This is the function that will prompt for **password length**
@@ -28,14 +28,47 @@ var passwordLength = function() {
     return passwordLength;
   }
 
-  //This turns string into number. Note:refer to documentation if im still confused later. Thanks for showing me this
+  //This turns string into number. Note:refer to documentation if im still confused later.
   lengthPass = Math.floor(Number(lengthPass));
 
   //This will send data from this function to layout function!
   return lengthPass;
 }
-passwordLength();
 
+//Function That will determing included Character sets
+var charaInclusions = function() {
+  //String to send back inclusions at end
+  var passwordInclusions = "";
+
+  //Character Sets
+  var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "0123456789";
+  var specialChara = "~`!@#$%^&*+<?/;:(=)|{";
+
+  //Ask to include characters(Confirms or Prompts?)
+  var confirmLower = confirm("Include Lower Case Characters?");
+  var confirmUpper = confirm("Include Upper Case Characters");
+  var confirmNumber = confirm("Inlcude Numbers?");
+  var confirmSpecial = confirm("Include Special Characters?");
+
+  //Validate Selections
+  if (confirmLower == true) {
+    passwordInclusions += lowerCase;
+  }
+  if (confirmUpper == true) {
+    passwordInclusions += upperCase;
+  }
+  if (confirmNumber == true) {
+    passwordInclusions += numbers;
+  }
+  if (confirmSpecial == true) {
+    passwordInclusions += specialChara;
+  }
+
+  //Send back results
+  return passwordInclusions;
+}
 
 // Assignment Code Ending
 var generateBtn = document.querySelector("#generate");
